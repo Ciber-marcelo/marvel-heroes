@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-white text-black
+    @apply bg-white
   }
 }
 
 .container {
-  @apply mx-auto w-full max-w-[1200px] px-6
+  @apply mx-auto w-full max-w-[1120px] px-4
 }

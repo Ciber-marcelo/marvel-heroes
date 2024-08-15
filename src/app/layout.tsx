@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const work_Sans = Work_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Marvel Heroes",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={work_Sans.className}>{children}</body>
     </html>
   );
 }

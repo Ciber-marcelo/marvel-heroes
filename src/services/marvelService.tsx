@@ -14,15 +14,11 @@ export const fetchCharacters = async (name: string) => {
   const timestamp = new Date().getTime();
   const hash = generateHash(timestamp.toString());
   try {
-    const response = await axios.get(`${BASE_URL}characters`, {
-      params: {
-        apikey: PUBLIC_KEY,
-        ts: timestamp,
-        hash: hash,
-        nameStartsWith: name,
-      },
-    });
-    console.log(response.data.data.results)
+    let url = `${BASE_URL}characters?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`;
+    if (name) {
+      url += `&nameStartsWith=${encodeURIComponent(name)}`;
+    }
+    const response = await axios.get(url);
     return response.data.data.results;
   } catch (error) {
     console.error('Erro ao buscar personagens:', error);
