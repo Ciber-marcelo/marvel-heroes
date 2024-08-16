@@ -1,17 +1,20 @@
 import { formatName } from "@/utils/formatName"
 import Image from "next/image"
+import Link from "next/link"
 
 type Props = {
   image: string
   name: string
   onClick: any
   fav: boolean
+  link: any
 }
 
-export default function CharacterCard({ image, name, onClick, fav }: Props) {
+export default function CharacterCard({ image, name, onClick, fav, link }: Props) {
   return (
     <div className='flex flex-col justify-start'>
-      <Image
+      <Link href={`/heroPage/${link}`}>
+        <Image
         className='w-[240px] h-[240px] object-cover'
         width={240}
         height={240}
@@ -19,6 +22,7 @@ export default function CharacterCard({ image, name, onClick, fav }: Props) {
         alt="image hero"
         priority={true}
       />
+      </Link>
       <div className="w-[240px] h-1 mb-2 bg-color1"></div>
 
       <div className='w-[240px] flex justify-between items-center'>

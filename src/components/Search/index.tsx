@@ -3,9 +3,10 @@ import Image from "next/image"
 type SearchProps = {
   onChange: any
   onKeyDown: any
+  disabled: boolean
 }
 
-export default function Search({ onChange, onKeyDown }: SearchProps) {
+export default function Search({ onChange, onKeyDown, disabled }: SearchProps) {
   return (
     <div className='w-full  max-w-[880px] flex items-center px-2 bg-color2 rounded-full'>
       {/* <FaSearch size={20} color='white'/> */}
@@ -34,7 +35,8 @@ export default function Search({ onChange, onKeyDown }: SearchProps) {
             placeholder:text-color1
             focus:outline-none
          "
-        placeholder="Procure por heróis"
+        placeholder={disabled ? 'Aguarde...' :"Procure por heróis"}
+        disabled={disabled}
       />
     </div>
   )

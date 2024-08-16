@@ -18,10 +18,8 @@ export default function CharacterList() {
 
   //Verifico se existe favoritos no localStorage
   useEffect(() => {
-    const storedFavorites = localStorage.getItem('favorites');
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]') as number[];
+    setFavorites(storedFavorites);
   }, []);
 
   const getCharacters = async () => {
@@ -47,7 +45,7 @@ export default function CharacterList() {
   }
 
   const sortCharacters = () => {
-    if(sort) {
+    if (sort) {
       const sortedChar = [...characters].sort((a, b) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -63,7 +61,7 @@ export default function CharacterList() {
       setFavorites(sortedFav)
 
       setSort(false)
-    }else {
+    } else {
       const sorted = [...characters].sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
         if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
@@ -83,20 +81,23 @@ export default function CharacterList() {
   }
 
   const toggleFavorite = (character: any) => {
-      if (favorites.some(fav => fav.name === character.name)) {
-        // Remove dos favoritos
-        setFavorites(favorites.filter(fav => fav.name !== character.name));
-        
-      } else {
-        // Adiciona aos favoritos
-        if (favorites.length < 5) {
-          setFavorites([...favorites, character]);
-        } else {
-          alert('Você pode favoritar no máximo 5 heróis.');
-        }
-      }
+    let updatedFavorites: number[];
 
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+    if (favorites.some(fav => fav.id === character.id)) {
+      // Remove o personagem 
+      updatedFavorites = favorites.filter(fav => fav.id !== character.id);
+    } else {
+      // Adiciona o personagem
+      updatedFavorites = [...favorites, character];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
+  //callback para o clique do botão
+  const handleFavorite = (character: any) => {
+    toggleFavorite(character);
   };
 
   const handleFilterChange = () => {
@@ -126,7 +127,7 @@ export default function CharacterList() {
       </div>
 
       <div className='container flex justify-center mb-10'>
-        <Search onChange={(e: any) => setSearch(e.target.value)} onKeyDown={keyPress} />
+        <Search onChange={(e: any) => setSearch(e.target.value)} onKeyDown={keyPress} disabled={loading} />
       </div>
 
       {loading ?
@@ -158,8 +159,9 @@ export default function CharacterList() {
                 key={character.id}
                 name={character.name}
                 image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                onClick={() => toggleFavorite(character)}
-                fav={favorites.some(fav => fav.name === character.name) ? true : false}
+                onClick={() => handleFavorite(character)}
+                fav={favorites.some(fav => fav.id === character.id ? true : false)}
+                link={character.id}
               />
             ))}
           </div>
