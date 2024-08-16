@@ -9,9 +9,5 @@ export default async function HeroPage({ params }: any) {
       return <Loading />;
    }
 
-   return (
-      <>
-         <CharacterDetails id={numericId}/>
-      </>
-   );
+   return <CharacterDetails id={numericId} />;
 };

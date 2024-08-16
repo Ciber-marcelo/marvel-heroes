@@ -7,7 +7,6 @@ type Props = {
 }
 
 export default function InfoCard({ image, text, num }: Props) {
-
    return (
       <div className='w-auto h-[60px] flex flex-col gap-2'>
          <div className="text-textColor1 text-[12px] font-bold">{text}</div>

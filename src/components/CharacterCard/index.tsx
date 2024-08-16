@@ -32,7 +32,7 @@ export default function CharacterCard({ image, name, onClick, fav, link }: Props
             className='w-5 h-5 cursor-pointer'
             width={20}
             height={20}
-            src={fav ? '/assets/icones/heart/Path Copy 7.svg' : '/assets/icones/heart/Path Copy 2.png'}
+            src={fav ? '/assets/icones/heart/Path.svg' : '/assets/icones/heart/Path Copy 2.png'}
             alt="favorite hero"
             priority={true}
           />

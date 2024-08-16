@@ -7,6 +7,7 @@ import Image from "next/image"
 import Filter from '../Filter';
 import Search from '../Search';
 import Loading from '../Loading';
+import Footer from '../Footer';
 
 export default function CharacterList() {
   const [characters, setCharacters] = useState<any>([]);
@@ -147,7 +148,7 @@ export default function CharacterList() {
 
               <Filter
                 image='/assets/icones/heart/Path.svg'
-                text='Somente favoritos'
+                text={showFavorites ? 'Todos os personagens' : 'Somente favoritos'}
                 onClick={handleFilterChange}
               />
             </div>
@@ -167,6 +168,8 @@ export default function CharacterList() {
           </div>
         </div>
       }
+
+      <Footer />
     </div>
   );
 }

@@ -7,10 +7,9 @@ type Props = {
 }
 
 export default function Filter({ image, text, onClick }: Props) {
-  
   return (
     <button 
-      className='flex items-center gap-4 p-2 rounded-md hover:bg-color2 active:bg-color3' 
+      className='min-w-[224px] flex items-center gap-4 p-2 rounded-md hover:bg-color2 active:bg-color3' 
       onClick={onClick}
     >
       <Image

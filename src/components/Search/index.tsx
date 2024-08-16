@@ -9,8 +9,6 @@ type SearchProps = {
 export default function Search({ onChange, onKeyDown, disabled }: SearchProps) {
   return (
     <div className='w-full  max-w-[880px] flex items-center px-2 bg-color2 rounded-full'>
-      {/* <FaSearch size={20} color='white'/> */}
-
       <Image
         className='w-[20px] h-[20px] mx-4'
         width={20}
