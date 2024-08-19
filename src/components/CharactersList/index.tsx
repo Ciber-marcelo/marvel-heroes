@@ -87,13 +87,16 @@ export default function CharacterList() {
     if (favorites.some(fav => fav.id === character.id)) {
       // Remove o personagem 
       updatedFavorites = favorites.filter(fav => fav.id !== character.id);
-    } else {
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else if(favorites.length < 5) {
       // Adiciona o personagem
       updatedFavorites = [...favorites, character];
+      setFavorites(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else {
+      alert('Você pode favoritar no máximo 5 heróis.')
     }
-
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   //callback para o clique do botão
