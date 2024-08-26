@@ -39,10 +39,6 @@ Instruções:
 
 ---
 
-## Acessar projeto
-
-Segue o link para acessar o projeto: [Marvel Heroes](https://marvel-heroes-marcelones.vercel.app/)
-
 <br/>
 <div align="center">
   Desenvolvido por Marcelones
