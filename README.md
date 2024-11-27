@@ -1,41 +1,44 @@
 ## Sobre
 
-**Marvel Heroes** é uma aplicação web feita para listar os personagens da Marvel, ver suas informações e favoritar seus heróis favoritos.
+Uma aplicação para gerenciamento de corridas, que inclui estimativas de preços, confirmação de corridas e histórico de viagens. O projeto é composto por um backend RESTful e um frontend em React, ambos totalmente dockerizados para facilitar a implantação.
 
 ---
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 
-O projeto foi feito utilizando as seguintes tecnologias:
+### Backend
+- **Node.js** com **Express**.
+- **TypeScript** para tipagem estática.
+- **Docker** para containerização.
 
-- Next JS
-- Typescript
-- Tailwind CSS
-- Axios
+### Frontend
+- **React** com **TypeScript**.
+- **React Toastify** para notificações.
+- **CSS Modules** para estilização.
 
-Instruções:
+### Infraestrutura
+- **Docker Compose** para orquestração dos serviços.
+- Variáveis de ambiente para configuração.
+
+---
+
+## Instruções:
 
 ```bash
-  # Crie um arquivo ".env.local" na raiz do seu projeto e adicione suas chaves da API da Marvel:
-  NEXT_PUBLIC_MARVEL_PUBLIC_KEY=sua-chave-publica
-  NEXT_PUBLIC_MARVEL_PRIVATE_KEY=sua-chave-privada
+  # Crie um arquivo ".env" na raiz do projeto e adicione sua chave de API do Google Maps no seguinte formato:
+  GOOGLE_API_KEY=<chave da API>
 
-  # Compilar o projeto:
-  npm install
-
-  # Rodar o projeto:
-  npm run dev 
+  # Compilar o projeto com docker:
+  docker-compose up --build
 ```
 
 ---
 
 ## Funcionalidades
 
-- Listagem de personagens da Marvel
-
-- Visualização de detalhes dos personagem
-
-- Opção de favoritar personagens
+- **Estimativa de Corrida**: Calcule o valor e o tempo estimados para uma corrida com base nos dados fornecidos.
+- **Confirmação de Corrida**: Confirme uma corrida e salve os detalhes no banco de dados.
+- **Histórico de Corridas**: Consulte o histórico de corridas de um usuário, filtrando por motoristas se necessário.
 
 ---
 
